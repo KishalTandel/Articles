@@ -4,6 +4,12 @@ let navBar = document.querySelector("nav");
 let name = document.querySelector('.name');
 let favIcon = document.querySelector(".favicon");
 let infoContainer = document.querySelector(".info_container");
+let quoteContainer = document.querySelector(".quote_container")
+let cards = document.querySelectorAll(".card");
+let subLinks = document.querySelectorAll(".web_link p");
+let subNav = document.querySelector(".sub_nav");
+let quotation = document.querySelector('.quotation');
+let author = document.querySelector('.author');
 let darkIcon = document.getElementById('dark_icon');
 let lightIcon = document.getElementById('light_icon');
 let darkToggle = document.getElementById("dark_toggle");
@@ -58,38 +64,53 @@ let callBack= (entries) => {
     if (!(entries[0].isIntersecting)){
         navBar.style.transform='translateY(0%)';
         }else{
-        navBar.style.transform='translateY(-100%)'}
-}
+        navBar.style.transform='translateY(-100%)'
+}}
 
 let obj= new IntersectionObserver(callBack,object);
 obj.observe(infoContainer);
 
-let label=document.querySelectorAll('.label');
-let sign=document.querySelectorAll('.sign')
-let content=document.querySelectorAll(".content");
-let title=document.querySelectorAll(".title")
-let border=document.querySelectorAll(".border")
-label.forEach((ele,idx) =>{
-    ele.addEventListener("click", ()=>{
-    if(sign[idx].innerText==='+'){
-        content[idx].style.maxHeight=content[idx].scrollHeight+"px";
-        sign[idx].innerText='-';
-        border[idx].classList.add('cent');
-   }else {content[idx].style.maxHeight='0px';
-    border[idx].classList.remove('cent');
-        sign[idx].innerText='+';
-    }})
-})
+let storedIndex=-1;
+let isSame=-1;
+let runTimeout=[];
 
+let getQuote = () => {
+    do{
+        index=Math.floor(Math.random()*(quotes.length)); 
+    } while(index===isSame || index===localStorage.getItem('index'));
+    localStorage.setItem('index', index);
+        runTimeout.forEach((timeout)=>{clearTimeout(timeout)});
+        runTimeout=[];
+        quotation.innerText='';
+        let str=quotes[index].quote;
+        let arr=str.split('');
+        arr.forEach((letter,idx)=>{
+        let timeout=setTimeout(()=>{
+        quotation.innerText=quotation.innerText+letter;
+        },10*idx);runTimeout.push(timeout);})
+        author.innerText='\u2014'+' '+quotes[index].author;
+        isSame=index;
+    }
+    
+quoteContainer.addEventListener('click', () => {
+   getQuote();
+});
 
-let barticles=document.querySelector(".Articles");
-articles.addEventListener("click",scrollToTop);
+let articles=document.querySelector('.Articles')
+articles.forEach((link)=> {
+    link.addEventListener('click', scrollToTop)
+});
+
 function scrollToTop(){
     function step(){
         window.scrollBy(0,-100);
         if(window.scrollY>0){ requestAnimationFrame(step)}
     } requestAnimationFrame(step)
 };
+
+window.addEventListener('load', () => {
+    getQuote();
+});
 
 let tooltip=document.querySelector('.tooltip');
 
@@ -112,16 +133,10 @@ toggle.addEventListener('mouseleave',()=>{
 
 let progressBar=document.querySelector('.progress_bar')
 let main=document.querySelector('main')
-let progressBarWidth=() => {
+let footer=document.querySelector('footer')
+window.addEventListener("scroll", () => {
     let top =-main.getBoundingClientRect().top;
-    let totalHeight =main.scrollHeight-document.documentElement.clientHeight;
+    let totalHeight =main.scrollHeight+footer.scrollHeight-document.documentElement.clientHeight;
     let scrollPercent = (top/ totalHeight) * 100;
     progressBar.style.width = scrollPercent + "%";
-  }
-
-window.addEventListener("scroll", progressBarWidth);
-
-let contents=document.querySelectorAll('.content');
-let resizeObject=new ResizeObserver(progressBarWidth);
-contents.forEach((content)=>{
-resizeObject.observe(content)})
+  });
