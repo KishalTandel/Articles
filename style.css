@@ -192,7 +192,7 @@ main{
 .card{
   display : flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width :22em;
   border : solid 0.01em;
@@ -281,6 +281,11 @@ li a:active, li p:active{
 
 .card a{
   font-size: 1.2em;
+}
+
+.card p, .card a{
+  padding-top:0.5em;
+  padding-bottom:0.5em;
 }
 
 @media (max-width:741px) {
