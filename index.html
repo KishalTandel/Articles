@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Personal Website">
+    <meta name="author" content="KishalTandel">
+    <meta name="google-site-verification" content="NklALwXRNad99PkG4FtHz3YrzhVPcfpQ2rWRuZyGk5c" />
+    <title>Articles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preload" as="image" href="assets/favicon/light/favicon_512.png">
+    <link rel="preload" as="image" href="assets/favicon/dark/favicon_512.png"> 
+    <link rel="preload" as="image" href="assets/toggle_icon/light/moon_filled.png">
+    <link rel="preload" as="image" href="assets/toggle_icon/dark/sun_filled.png">
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="info_container">
+            <div class="favicon">
+                <img src="assets/favicon/dark/favicon_512.png" class="hidden" id="dark_icon"/>
+                <img src="assets/favicon/light/favicon_512.png" class="hidden" id="light_icon">
+            </div>
+            <div class="name">
+                Articles
+            </div>
+        </div>   
+
+        <nav>
+            <div class="utilities">
+                <div class="web_link">
+                    <p id="name"><a href="https://kishaltandel.github.io/">kishaltandel</a></p>
+                    <p><a href="https://kishaltandel.github.io/">.github.io</a></p>
+                </div>
+                <ul class="sub_nav">
+                    <li class="CV">
+                        <a href="CV.pdf" >CV</a>
+                    </li>
+                    <li class="Books_Solutions">
+                        <a href="https://kishaltandel.github.io/Books-Solutions/" >Books' Solutions</a>
+                    </li>
+                    <li class="Articles">
+                        <a >Articles</a>
+                    </li>
+                    <li class="github"><a href="https://github.com/KishalTandel/" target="_blank" >github</a>
+                    </li>
+                    <li class="toggle">
+                        <img src="assets/toggle_icon/dark/sun_filled.png" id="dark_toggle" class="hidden"/>
+                        <img src="assets/toggle_icon/light/moon_filled.png" id="light_toggle" class="hidden"/>
+                    </li>
+                </ul>
+                <span class="tooltip hidden"></span>
+            </div>
+            <div class="progress_bar"></div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="card_container">
+            <div class="card" id="one">
+                <p>Preview</p>
+                <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/KishalTandel/Articles/refs/heads/main/Quantum Tunneling.pdf&embedded=true"></iframe>
+                <a href="Quantum Tunneling.pdf" download>Download PDF</a></div>
+    </section>
+</main>    
+
+    <script src="script.js"></script>  
+</body>
+</html>  
