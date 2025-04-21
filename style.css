@@ -209,7 +209,7 @@ main{
 }
 
 .dark .card{
-  background-color: #33333b;
+  background-color: #373742;
 }
 
 .light .card{
@@ -419,6 +419,5 @@ li a:active, li p:active{
   }
 
 }
-
 
 
