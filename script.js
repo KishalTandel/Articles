@@ -96,10 +96,8 @@ quoteContainer.addEventListener('click', () => {
    getQuote();
 });
 
-let articles=document.querySelector('.Articles')
-articles.forEach((link)=> {
-    link.addEventListener('click', scrollToTop)
-});
+let papers=document.querySelector('.Papers')
+papers.addEventListener('click', scrollToTop);
 
 function scrollToTop(){
     function step(){
